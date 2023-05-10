@@ -24,6 +24,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-node": "^1.2.4"
+		"@sveltejs/adapter-node": "^1.2.4",
+		"@zip.js/zip.js": "^2.7.9",
+		"three": "^0.152.2"
 	}
 }

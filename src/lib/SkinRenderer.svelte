@@ -91,9 +91,12 @@
     async function SetGlassMaterial(material, skin)
     {
         material.transparent = true;
+        material.opacity = 0.5;
+        material.color.r = material.color.g = material.color.b = 0;
         material.aoMap = await LoadTexture(skin, "Glass_AO.dds", FlipTexture, msg => dispatch("progress", msg));
         material.map = await LoadTexture(skin, "Glass_D.dds", FlipTexture, msg => dispatch("progress", msg));
         material.emissiveMap = await LoadTexture(skin, "Glass_I.dds", FlipTexture, msg => dispatch("progress", msg));
+        material.needsUpdate = true;
     }
 
     async function LoadSkin(control, object)
@@ -157,10 +160,6 @@
                         normals);
         }
 
-        material.userData = {
-                _Lights: { value: 1.0 }
-            }
-        material.uniforms = material.userData;
 
         material.needsUpdate = true;
         return material;

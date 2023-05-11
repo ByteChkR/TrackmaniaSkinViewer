@@ -16,12 +16,23 @@
             setLoadingProgress(progress);
         }
     }
+
+    function GetUrl()
+    {
+        if(data?.id)
+        {
+            return `/storageObjects/${data.id}`;
+        }
+        return "/default.zip";
+    }
+
+
 </script>
 <div class="fullscreen" style="background-color: black;">
     {#if loading}
         <LoadingScreen bind:setLoadingProgress={setLoadingProgress}></LoadingScreen>
     {/if}
-    <SkinRenderer on:loaded={() => loading = false} on:progress={e => OnProgress(e.detail)} url="/default.zip"></SkinRenderer>
+    <SkinRenderer on:loaded={() => loading = false} on:progress={e => OnProgress(e.detail)} url="{GetUrl()}"></SkinRenderer>
 </div>
 
 <style>

@@ -51,6 +51,7 @@ export async function LoadTexture(skin, name, onComplete, onProgress)
                 if(onComplete) 
                     onComplete(tex); 
                 tex.needsUpdate = true;
+                URL.revokeObjectURL(url);
                 resolve(tex);
             },
             xhr => {if(onProgress) onProgress({message: 'Loading Texture ' + name, progress: xhr.loaded / xhr.total})},
